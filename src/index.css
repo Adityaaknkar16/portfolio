@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
+  --dark: #0d0d0d;
+  --dark-2: #141414;
+  --dark-3: #1c1c1c;
+  --cream: #f2ede4;
+  --accent-green: #2a5f4f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark font-body text-cream antialiased;
+    cursor: none;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-cream;
+  }
+}
+
+@layer components {
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .glass {
+    @apply border border-white/5 bg-white/[0.03] backdrop-blur-md;
+  }
+
+  .cta-chamfer {
+    clip-path: polygon(
+      8px 0,
+      100% 0,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      0 100%,
+      0 8px
+    );
+  }
+
+  .stat-accent {
+    @apply border-l-2 border-gold pl-4;
+  }
+
+  .skill-tag {
+    @apply rounded border border-white/10 bg-dark-4 px-3 py-1.5 font-mono text-xs text-cream/80 transition-colors duration-300 hover:border-gold hover:text-gold-light;
+  }
+
+  .typewriter-glow {
+    text-shadow: 0 0 24px rgba(201, 168, 76, 0.15);
+  }
+
+  .hero-role-badge {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* 3D laptop scene */
+  .laptop-scene {
+    perspective: 1200px;
+    width: 100%;
+  }
+
+  .laptop-hinge {
+    transform-origin: 50% 100%;
+    transform: rotateX(-20deg);
+  }
+
+  .laptop-screen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    transform-style: preserve-3d;
+    transform: translateZ(20px);
+  }
+
+  .laptop-bezel {
+    @apply h-full w-full overflow-hidden rounded-t-lg border border-gold/25 bg-dark-3 p-1.5;
+    box-shadow:
+      0 0 40px rgba(201, 168, 76, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .laptop-camera {
+    @apply mx-auto mb-1 h-1 w-1 rounded-full bg-dark-4;
+  }
+
+  .laptop-display {
+    @apply flex h-[calc(100%-12px)] flex-col overflow-hidden rounded-sm bg-dark;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .laptop-titlebar {
+    @apply flex items-center gap-1 border-b border-white/5 bg-dark-2 px-2 py-1;
+  }
+
+  .laptop-dot {
+    @apply h-1.5 w-1.5 rounded-full;
+  }
+
+  .laptop-code {
+    @apply flex-1 overflow-hidden p-2;
+  }
+
+  .laptop-base {
+    @apply relative mx-auto mt-1 h-3 w-[104%] -translate-x-[2%] rounded-b-md border border-gold/15 bg-gradient-to-b from-dark-3 to-dark-4;
+    transform: translateZ(8px) rotateX(78deg);
+    transform-origin: top center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .laptop-trackpad {
+    @apply absolute left-1/2 top-1/2 h-1 w-12 -translate-x-1/2 -translate-y-1/2 rounded-sm bg-gold/10;
+  }
+
+  .tech-chip {
+    @apply rounded border border-gold/30 bg-dark-3/90 px-3 py-1.5 backdrop-blur-md;
+    box-shadow: 0 0 24px rgba(201, 168, 76, 0.12);
+  }
+
+  .tech-chip-3d {
+    @apply rounded-lg border border-gold/25 bg-dark-3/90 p-3 backdrop-blur-md;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 168, 76, 0.1);
+    transform-style: preserve-3d;
+  }
+
+  .tech-terminal {
+    @apply rounded-lg p-4;
+    box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+  }
+
+  .server-rack {
+    @apply flex flex-col gap-1.5 rounded-lg border border-gold/25 bg-dark-3/90 p-3 backdrop-blur-md;
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.1);
+    transform: perspective(800px) rotateY(12deg);
+  }
+
+  .server-unit {
+    @apply flex items-center gap-2 rounded border border-white/10 bg-dark-4 px-2 py-1.5;
+  }
+
+  .server-led {
+    @apply h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green shadow-[0_0_6px_#2A5F4F];
+  }
+
+  .ai-cluster {
+    @apply relative h-36 w-full rounded-lg border border-gold/25 bg-dark-3/90 p-4 backdrop-blur-md;
+    box-shadow: 0 0 35px rgba(42, 95, 79, 0.15);
+    transform: perspective(800px) rotateY(-10deg);
+  }
+
+  .ai-core {
+    @apply absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-gold/50 bg-gold/10;
+    box-shadow: 0 0 24px rgba(201, 168, 76, 0.25);
+  }
+
+  .ai-node {
+    @apply absolute rounded border border-accent-green/30 bg-dark-4 px-2 py-1;
+  }
+}
+
+/* Side margins show tech scene; center content stays readable */
+@layer utilities {
+  .section-surface {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(13, 13, 13, 0.45) 14%,
+      rgba(13, 13, 13, 0.82) 24%,
+      rgba(13, 13, 13, 0.82) 76%,
+      rgba(13, 13, 13, 0.45) 86%,
+      transparent 100%
+    );
+  }
+
+  .section-surface-alt {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(20, 20, 20, 0.5) 14%,
+      rgba(20, 20, 20, 0.85) 24%,
+      rgba(20, 20, 20, 0.85) 76%,
+      rgba(20, 20, 20, 0.5) 86%,
+      transparent 100%
+    );
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    cursor: auto;
+  }
+}
