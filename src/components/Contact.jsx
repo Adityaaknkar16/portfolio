@@ -1,6 +1,7 @@
 import { profile } from '../data/content';
 import ScrollReveal from './ScrollReveal';
 import SectionMarginFX from './SectionMarginFX';
+import { SectionHeading } from './About';
 
 const contactItems = [
   { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
@@ -11,21 +12,16 @@ const contactItems = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-surface relative py-24 md:py-32">
-      <SectionMarginFX tag="// contact" />
+    <section id="contact" className="relative py-24 md:py-32 border-b border-border">
+      <SectionMarginFX tag="// contact.sh" />
       <div className="relative z-10 mx-auto max-w-content px-6 md:px-8">
-        <ScrollReveal direction="right">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold">06 — Contact</p>
-          <h2 className="mt-2 font-display text-4xl italic text-cream md:text-5xl">
-            Let&apos;s connect
-          </h2>
-        </ScrollReveal>
+        <SectionHeading label="06 — Contact" title="Let's connect" direction="right" />
 
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {contactItems.map((item, i) => (
             <ScrollReveal key={item.label} direction="depth" delay={i * 0.08}>
-              <div className="glass group rounded-xl border border-white/5 p-6 transition-colors hover:border-gold/25">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-gold">
+              <div className="group border-2 border-border bg-panel p-6 transition-all hover:border-accent hover:shadow-[4px_4px_0px_0px_rgba(0,255,102,1)]">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">
                   {item.label}
                 </p>
                 {item.href ? (
@@ -33,12 +29,12 @@ export default function Contact() {
                     href={item.href}
                     target={item.label === 'GitHub' ? '_blank' : undefined}
                     rel={item.label === 'GitHub' ? 'noopener noreferrer' : undefined}
-                    className="mt-3 block text-sm text-cream/80 transition-colors group-hover:text-gold-light"
+                    className="mt-3 block font-mono text-sm text-zinc-300 transition-colors group-hover:text-accent font-semibold"
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <p className="mt-3 text-sm text-cream/80">{item.value}</p>
+                  <p className="mt-3 font-mono text-sm text-zinc-400">{item.value}</p>
                 )}
               </div>
             </ScrollReveal>
@@ -49,7 +45,7 @@ export default function Contact() {
           <div className="mt-12 text-center">
             <a
               href={`mailto:${profile.email}?subject=Portfolio%20Inquiry`}
-              className="cta-chamfer inline-block bg-gold px-10 py-4 font-mono text-sm font-medium uppercase tracking-wider text-dark transition-colors hover:bg-gold-light"
+              className="btn-brutalist-accent inline-block px-10 py-4 font-mono text-sm uppercase tracking-wider font-bold"
             >
               Send a Message
             </a>

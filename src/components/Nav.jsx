@@ -14,28 +14,26 @@ export default function Nav() {
 
   return (
     <motion.header
-      className="fixed left-0 right-0 top-0 z-50 transition-colors duration-500"
+      className="fixed left-0 right-0 top-0 z-50 transition-colors duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.nav
-        className="mx-auto flex max-w-content items-center justify-between px-6 py-4 md:px-8"
+        className="mx-auto flex max-w-content items-center justify-between px-6 py-4 md:px-8 border-b-2"
         animate={{
-          backgroundColor: scrolled ? 'rgba(13, 13, 13, 0.92)' : 'rgba(13, 13, 13, 0)',
-          borderBottomColor: scrolled ? 'rgba(201, 168, 76, 0.15)' : 'rgba(255,255,255,0)',
+          backgroundColor: scrolled ? '#111215' : 'transparent',
+          borderBottomColor: scrolled ? '#1d2026' : 'transparent',
         }}
         style={{
-          backdropFilter: scrolled ? 'blur(12px)' : 'blur(0px)',
-          borderBottomWidth: 1,
           borderBottomStyle: 'solid',
         }}
       >
         <Link
           to="/"
-          className="font-display text-lg italic text-gold transition-colors hover:text-gold-light"
+          className="font-mono text-sm font-bold text-accent transition-colors hover:text-white"
         >
-          ASA
+          [ ASA ]
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -43,9 +41,9 @@ export default function Nav() {
             <li key={link.hash}>
               <a
                 href={link.hash}
-                className="font-mono text-xs uppercase tracking-widest text-cream/70 transition-colors hover:text-gold"
+                className="nav-link font-mono text-xs uppercase tracking-widest"
               >
-                {link.label}
+                ~/ {link.label.toLowerCase()}
               </a>
             </li>
           ))}
@@ -53,29 +51,29 @@ export default function Nav() {
 
         <button
           type="button"
-          className="font-mono text-xs text-gold md:hidden"
+          className="font-mono text-xs text-accent border border-accent/35 px-3 py-1.5 hover:bg-accent/10 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? 'Close' : 'Menu'}
+          {menuOpen ? 'SYS.CLOSE()' : 'SYS.MENU()'}
         </button>
       </motion.nav>
 
       {menuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass border-t border-white/5 bg-dark/95 px-6 py-6 md:hidden"
+          className="border-b-2 border-border bg-panel px-6 py-6 md:hidden"
         >
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.hash}>
                 <a
                   href={link.hash}
-                  className="font-mono text-sm uppercase tracking-widest text-cream/80"
+                  className="font-mono text-sm uppercase tracking-widest text-zinc-300 hover:text-accent"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {link.label}
+                  ~/ {link.label.toLowerCase()}
                 </a>
               </li>
             ))}

@@ -4,22 +4,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: '#C9A84C',
-        'gold-light': '#E8C96A',
-        dark: '#0D0D0D',
-        'dark-2': '#141414',
-        'dark-3': '#1C1C1C',
-        'dark-4': '#242424',
-        cream: '#F2EDE4',
-        'accent-green': '#2A5F4F',
+        bg: '#07080a',
+        accent: {
+          DEFAULT: '#00ff66',
+          dim: 'rgba(0, 255, 102, 0.15)',
+          glow: 'rgba(0, 255, 102, 0.25)',
+        },
+        panel: '#111215',
+        border: '#1d2026',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"DM Mono"', 'ui-monospace', 'monospace'],
+        syne: ['Syne', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       maxWidth: {
-        content: '1100px',
+        content: '1200px',
+      },
+      backgroundImage: {
+        'grid-overlay':
+          'linear-gradient(rgba(0, 255, 102, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 102, 0.02) 1px, transparent 1px)',
+      },
+      backgroundSize: {
+        'grid-size': '40px 40px',
       },
     },
   },
